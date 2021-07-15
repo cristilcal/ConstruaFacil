@@ -2,15 +2,19 @@ apiTests/Pet_old2.java
  apiTests.Pet_old2
 apiTests/Store.java
  apiTests.Store
-webTests/seleniumSimples.java
- webTests.seleniumSimples
+apiTests/Pet.java
+ apiTests.Pet
+utils/Evidencias.java
+ utils.Evidencias
 unitTestes/CalcTest.java
  unitTestes.CalcTest
 apiTests/Pet_old.java
  apiTests.Pet_old
-apiTests/Pet.java
- apiTests.Pet
-apiTests/User.java
- apiTests.User
 webTests/seleniumIDE.java
  webTests.seleniumIDE
+apiTests/User.java
+ apiTests.User
+utils/Logs.java
+ utils.Logs
+webTests/seleniumSimples.java
+ webTests.seleniumSimples
