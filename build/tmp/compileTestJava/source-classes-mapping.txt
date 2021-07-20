@@ -4,6 +4,8 @@ apiTests/Store.java
  apiTests.Store
 apiTests/Pet.java
  apiTests.Pet
+webTests/seleniumSimples.java
+ webTests.seleniumSimples
 utils/Evidencias.java
  utils.Evidencias
 unitTestes/CalcTest.java
@@ -16,5 +18,5 @@ apiTests/User.java
  apiTests.User
 utils/Logs.java
  utils.Logs
-webTests/seleniumSimples.java
- webTests.seleniumSimples
+webTests/comprarCursoCS.java
+ webTests.comprarCursoCS
