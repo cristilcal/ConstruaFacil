@@ -1,9 +1,11 @@
 apiTests/Pet_old2.java
  apiTests.Pet_old2
-apiTests/Store.java
- apiTests.Store
 apiTests/Pet.java
  apiTests.Pet
+apiTests/Store.java
+ apiTests.Store
+webTests/comprarCursoCS.java
+ webTests.comprarCursoCS
 webTests/seleniumSimples.java
  webTests.seleniumSimples
 utils/Evidencias.java
@@ -18,5 +20,5 @@ apiTests/User.java
  apiTests.User
 utils/Logs.java
  utils.Logs
-webTests/comprarCursoCS.java
- webTests.comprarCursoCS
+webTests/dontPadJavinha.java
+ webTests.dontPadJavinha

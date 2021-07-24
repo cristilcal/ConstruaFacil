@@ -6,22 +6,30 @@ import cucumber.api.java.Before;
 import cucumber.api.java.pt.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
 
-import static org.testng.AssertJUnit.assertEquals;
+import static org.testng.Assert.assertEquals;
+
 
 public class comprarCursoCS {
 
-    ChromeDriver driver;
+    WebDriver driver;
+    WebDriverWait wait;
+
 
     @Before
     public void iniciar(){
-        System.setProperty("webdriver.chrome.driver", "drivers/Chrome/91/chromedriver");
+        System.setProperty("webdriver.chrome.driver", "drivers/chrome/92/chromedriver");
         driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(60000, TimeUnit.MILLISECONDS);
+        //driver.manage().timeouts().implicitlyWait(60000, TimeUnit.MILLISECONDS);
         driver.manage().window().maximize(); // Maximizar a janela
+        wait = new WebDriverWait(driver, 30,2);
         System.out.println("0 - Antes do Teste iniciar");
     }
     @After
@@ -33,7 +41,7 @@ public class comprarCursoCS {
 
     @Dado("^que acesso o site da Iterasys$")
     public void queAcessoOSiteDaIterasys() {
-        driver.get("https://www.iterasys.com.br");
+        driver.get("http://www.iterasys.com.br");
         System.out.println("1 - Acessou o site");
     }
 
@@ -41,20 +49,25 @@ public class comprarCursoCS {
     public void pesquisoPor(String curso){
         driver.findElement(By.id("searchtext")).click();                //Opcional
         driver.findElement(By.id("searchtext")).clear();                //Opcional
-        driver.findElement(By.id("searchtext")).sendKeys(Keys.chord(curso)); // Escreve o nome do curso letra por letra
+        driver.findElement(By.id("searchtext")).sendKeys(curso); // Escreve o nome do curso letra por letra
         System.out.println("2 - Digitou o nome do curso como " + curso);
 
     }
 
     @E("^clico na Lupa$")
-    public void clicoNaLupa() {
+    public void clicoNaLupa() throws InterruptedException {
         driver.findElement(By.id("btn_form_search")).click();
         System.out.println("3 - Clicou na lupa");
-    }
+
+        //Thread.sleep(2000);
+
+     }
 
     @Entao("^vejo a lista de resultados para curso \"([^\"]*)\"$")
     public void vejoAListaDeResultadosParaCurso(String curso) {
-        assertEquals(driver.findElement(By.cssSelector("h3")).getText(),"Cursos › \"" + curso + "\"");
+        String textoesperado = "Cursos › \"" + curso + "\"";
+        wait.until(ExpectedConditions.textToBe(By.cssSelector("h3:nth-child(1)"),textoesperado));
+        assertEquals(driver.findElement(By.cssSelector("h3:nth-child(1)")).getText(),textoesperado);
         System.out.println("4 - Exibiu a lista de resultados para o curso " + curso);
     }
 
@@ -72,5 +85,10 @@ public class comprarCursoCS {
     }
 
 
+    @E("^pressiono Enter$")
+    public void pressionoEnter() {
+        driver.findElement(By.id("searchtext")).sendKeys(Keys.ENTER);
+        System.out.println("3a - Pressionou Enter");
+    }
 }
 
