@@ -1,24 +1,38 @@
-apiTests/Pet_old2.java
- apiTests.Pet_old2
-apiTests/Pet.java
- apiTests.Pet
 apiTests/Store.java
  apiTests.Store
 webTests/comprarCursoCS.java
  webTests.comprarCursoCS
 webTests/seleniumSimples.java
  webTests.seleniumSimples
-utils/Evidencias.java
- utils.Evidencias
 unitTestes/CalcTest.java
  unitTestes.CalcTest
+pages/Carrinho.java
+ pages.Carrinho
 apiTests/Pet_old.java
  apiTests.Pet_old
 webTests/seleniumIDE.java
  webTests.seleniumIDE
 apiTests/User.java
  apiTests.User
-utils/Logs.java
- utils.Logs
+pages/Home.java
+ pages.Home
+stepsPO/Runner.java
+ stepsPO.Runner
+apiTests/Pet_old2.java
+ apiTests.Pet_old2
+stepsPO/comprarCursoPO.java
+ stepsPO.comprarCursoPO
 webTests/dontPadJavinha.java
  webTests.dontPadJavinha
+utils/Evidencias.java
+ utils.Evidencias
+pages/Resultado.java
+ pages.Resultado
+utils/Logs.java
+ utils.Logs
+apiTests/Pet.java
+ apiTests.Pet
+stepsPO/Hooks.java
+ stepsPO.Hooks
+mobileTests/CalculadoraAPK.java
+ mobileTests.CalculadoraAPK

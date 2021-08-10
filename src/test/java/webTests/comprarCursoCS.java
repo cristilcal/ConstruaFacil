@@ -29,9 +29,10 @@ public class comprarCursoCS {
         driver = new ChromeDriver();
         //driver.manage().timeouts().implicitlyWait(60000, TimeUnit.MILLISECONDS);
         driver.manage().window().maximize(); // Maximizar a janela
-        wait = new WebDriverWait(driver, 30,2);
+        wait = new WebDriverWait(driver, 30,1);
         System.out.println("0 - Antes do Teste iniciar");
     }
+    
     @After
     public void finalizar(){
         driver.quit();
@@ -55,7 +56,7 @@ public class comprarCursoCS {
     }
 
     @E("^clico na Lupa$")
-    public void clicoNaLupa() throws InterruptedException {
+    public void clicoNaLupa() {
         driver.findElement(By.id("btn_form_search")).click();
         System.out.println("3 - Clicou na lupa");
 
@@ -79,6 +80,7 @@ public class comprarCursoCS {
 
     @Então("^confirmo o nome do curso como \"([^\"]*)\" e o preco de \"([^\"]*)\"$")
     public void confirmoONomeDoCursoComoEOPrecoDe(String curso, String preco){
+        wait.until(ExpectedConditions.textToBe(By.cssSelector("span.item-title"),curso));
         assertEquals(driver.findElement(By.cssSelector("span.item-title")).getText(), curso);
         assertEquals(driver.findElement(By.cssSelector("span.new-price")).getText(), preco);
         System.out.println("6 - Confirmou o nome como " + curso + " e o preco do curso como " + preco);
@@ -89,6 +91,28 @@ public class comprarCursoCS {
     public void pressionoEnter() {
         driver.findElement(By.id("searchtext")).sendKeys(Keys.ENTER);
         System.out.println("3a - Pressionou Enter");
+    }
+
+    @Quando("^clico na imagem de um curso$")
+    public void clicoNaImagemDeUmCurso() {
+       // driver.findElement(By.cssSelector("span.mais")).click();
+        driver.findElement(By.xpath("/html[1]/body[1]/main[1]/div[2]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[3]/div[1]/a[1]")).click();
+        System.out.println("3b - Clicou na imagem do curso");
+
+    }
+
+    @Entao("^vejo a pagina com detalhes do curso$")
+    public void vejoAPaginaComDetalhesDoCurso() {
+        wait.until(ExpectedConditions.titleIs("Mantis - Iterasys"));
+        assertEquals(driver.getTitle(),"Mantis - Iterasys");
+        System.out.println("4 - Confirmo o titulo");
+
+    }
+
+    @E("^click no OK do popup da LGPD$")
+    public void clickNoOKDoPopupDaLGPD() {
+        driver.findElement(By.cssSelector("a.cc-btn.cc-dismiss")).click();
+        System.out.println("2 - Clicou no ok do Lgpd");
     }
 }
 
